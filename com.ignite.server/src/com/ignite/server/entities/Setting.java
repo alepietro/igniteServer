@@ -5,16 +5,16 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="SETTING")
+@XmlRootElement(name = "SETTING")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Setting {
-	@XmlElement(required=true)
+	@XmlElement(required = true)
 	private int ID;
-	@XmlElement(required=true)
+	@XmlElement(required = true)
 	private String SETTINGS;
-	@XmlElement(required=true)
+	@XmlElement(required = true)
 	private int ID_CLIENT;
-	@XmlElement(required=true)
+	@XmlElement(required = true)
 	private String VALUE;
 
 	public int getID() {
@@ -48,13 +48,14 @@ public class Setting {
 	public void setVALUE(String vALUE) {
 		VALUE = vALUE.toUpperCase();
 	}
-	
-	public String toString(){
-		return("ID=*"+ID+"*,ID_CLIENT=*"+ID_CLIENT+"*,SETTINGS=*"+SETTINGS+"*,VALUE=*"+VALUE+"*");
+
+	public String toString() {
+		return ("ID=*" + ID + "*,ID_CLIENT=*" + ID_CLIENT + "*,SETTINGS=*" + SETTINGS + "*,VALUE=*" + VALUE + "*");
 	}
-	
-	public String toXml(){
-		return("<SETTING><ID>"+ID+"</ID><ID_CLIENT>"+ID_CLIENT+"</ID_CLIENT><SETTINGS>"+SETTINGS+"</SETTINGS><VALUE>"+VALUE+"</VALUE></SETTING>");
+
+	public String toXml() {
+		return ("<SETTING><ID>" + ID + "</ID><ID_CLIENT>" + ID_CLIENT + "</ID_CLIENT><SETTINGS>" + SETTINGS
+				+ "</SETTINGS><VALUE>" + VALUE + "</VALUE></SETTING>");
 	}
 
 }

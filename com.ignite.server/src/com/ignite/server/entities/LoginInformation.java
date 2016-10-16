@@ -5,29 +5,32 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="LOGIN")
+@XmlRootElement(name = "LOGIN")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class LoginInformation {
-	
-	@XmlElement(required=true)
+
+	@XmlElement(required = true)
 	private int ID;
-	@XmlElement(required=false)
+	@XmlElement(required = false)
 	private String PASSWORD;
-	
+
 	public int getID() {
 		return ID;
 	}
+
 	public void setID(int iD) {
 		ID = iD;
 	}
+
 	public String getPASSWORD() {
 		return PASSWORD.toUpperCase();
 	}
+
 	public void setPASSWORD(String pASSWORD) {
 		PASSWORD = pASSWORD.toUpperCase();
 	}
-	
-	public String toString(){
-		return("UserId = *" + ID + "*,Password = *" + PASSWORD + "*");
+
+	public String toString() {
+		return ("UserId = *" + ID + "*,Password = *" + PASSWORD + "*");
 	}
 }

@@ -1,12 +1,25 @@
 package com.ignite.server.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "TRANSFER")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Transfer {
+	@XmlElement
 	private int ID;
-	private GregorianCalendar WHEN;
+	@XmlElement
+	private String DAY;
+	@XmlElement
 	private double AMOUNT;
+	@XmlElement
 	private int ID_ACCOUNT_FROM;
+	@XmlElement
 	private int ID_ACCOUNT_TO;
 
 	public int getID() {
@@ -17,12 +30,12 @@ public class Transfer {
 		ID = iD;
 	}
 
-	public GregorianCalendar getWHEN() {
-		return WHEN;
+	public String getDAY() {
+		return DAY;
 	}
 
-	public void setWHEN(GregorianCalendar wHEN) {
-		WHEN = wHEN;
+	public void setDAY(String dAY) {
+		DAY = dAY;
 	}
 
 	public double getAMOUNT() {
@@ -47,5 +60,14 @@ public class Transfer {
 
 	public void setID_ACCOUNT_TO(int iD_ACCOUNT_TO) {
 		ID_ACCOUNT_TO = iD_ACCOUNT_TO;
+	}
+
+	public String toXml() {
+		String res = "";
+		res = "<TRANSFER>\n<ID>" + ID + "</ID>\n<AMOUNT>" + AMOUNT + "</AMOUNT>\n<ID_ACCOUNT_FROM>" + ID_ACCOUNT_FROM
+				+ "</ID_ACCOUNT_FROM>\n<ID_ACCOUNT_TO>" + ID_ACCOUNT_TO + "</ID_ACCOUNT_TO>\n<DAY>" + DAY
+				+ "</WHEN>\n</TRANSFER>";
+
+		return res;
 	}
 }

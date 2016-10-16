@@ -9,19 +9,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.ignite.server.dao.MySettingDAO;
-import com.ignite.server.entities.Setting;
+import com.ignite.server.dao.MyTransferDAO;
+import com.ignite.server.entities.Transfer;
 
-@Path("/settings")
-public class SettingWS {
+@Path("/transfers")
+public class TransferWS {
 
 	// This method is called if TEXT_PLAIN is request
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getPlainTextSettings() {
+	public String getPlainTextTransfer() {
 		String res = "";
-		Vector<Setting> vs = MySettingDAO.getAllSettings();
+		Vector<Transfer> vs = MyTransferDAO.getAllTransfers();
 
 		for (int i = 0; i < vs.size(); i++) {
 			res += vs.elementAt(i) + "\n";
@@ -33,15 +33,15 @@ public class SettingWS {
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.TEXT_XML)
-	public String getXmlSettings() {
-		String res = "<?xml version=\"1.0\"?>" + "\n" + "<SETTINGS>";
+	public String getXmlTransfers() {
+		String res = "<?xml version=\"1.0\"?>" + "\n" + "<TRANSFER>";
 
-		Vector<Setting> vs = MySettingDAO.getAllSettings();
+		Vector<Transfer> vs = MyTransferDAO.getAllTransfers();
 
 		for (int i = 0; i < vs.size(); i++) {
-			res += "<SETTING>" + vs.elementAt(i) + "</SETTING>\n";
+			res += vs.elementAt(i).toXml();
 		}
-		res += "</SETTINGS>";
+		res += "</TRANSFER>";
 		return res;
 	}
 
@@ -49,12 +49,12 @@ public class SettingWS {
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.TEXT_HTML)
-	public String getHtmlSettings() {
+	public String getHtmlTransfers() {
 		String res = "<html> " + "<title>" + "Hello Jersey" + "</title>" + "<body>";
 
-		Vector<Setting> vs = MySettingDAO.getAllSettings();
+		Vector<Transfer> vs = MyTransferDAO.getAllTransfers();
 		if ((vs == null) || (vs.size() == 0)) {
-			res += "<h1>No SETTINGS available</h1>\n";
+			res += "<h1>No TRANSFERS available</h1>\n";
 		} else {
 			for (int i = 0; i < vs.size(); i++) {
 				res += "<h1>" + vs.elementAt(i) + "</h1>\n";
@@ -67,43 +67,43 @@ public class SettingWS {
 	}
 
 	@POST
-	@Path("/getSetting")
+	@Path("/getTransfer")
 	@Consumes(MediaType.APPLICATION_XML)
-	public String getSetting(Setting c) {
-		String res = "<SETTINGS>" + "\n";
+	public String getTransfer(Transfer c) {
+		String res = "<TRANSFERS>" + "\n";
 
-		Setting temp = null;
-		Vector<Setting> vr = MySettingDAO.getSettings(c);
-		if (vr != null) {
-			for (int i = 0; i < vr.size(); i++) {
-				temp = vr.elementAt(i);
-				res += temp.toXml() + "\n";
-			}
-		}
+		Transfer temp = null;
+		Vector<Transfer> vr = MyTransferDAO.getTransfers(c);
+		// if (vr != null) {
+		// for (int i = 0; i < vr.size(); i++) {
+		// temp = vr.elementAt(i);
+		// res += temp.toXml() + "\n";
+		// }
+		// }
 
-		res += "</SETTINGS>";
+		res += "</TRANSFERS>";
 
 		return res;
 	}
 
 	@POST
-	@Path("/modSetting")
+	@Path("/modTransfer")
 	@Consumes(MediaType.APPLICATION_XML)
-	public String modSetting(Setting s) {
+	public String modTransfer(Transfer s) {
 		String res = "";
 
-		res = "" + MySettingDAO.modSetting(s);
+		res = "" + MyTransferDAO.modTransfer(s);
 
 		return res;
 	}
 
 	@POST
-	@Path("/addSetting")
+	@Path("/addTransfer")
 	@Consumes(MediaType.APPLICATION_XML)
-	public String addSetting(Setting s) {
+	public String addTransfer(Transfer s) {
 		String res = "";
 
-		res = "" + MySettingDAO.addSetting(s);
+		res = "" + MyTransferDAO.addTransfer(s);
 
 		return res;
 	}

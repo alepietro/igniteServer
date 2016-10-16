@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="CLIENT")
+@XmlRootElement(name = "CLIENT")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Client {
 	@XmlElement
@@ -58,8 +58,10 @@ public class Client {
 	public void setID_PASSWORD(int iD_PASSWORD) {
 		ID_PASSWORD = iD_PASSWORD;
 	}
-	
-	public String toXml(){
-		return("<CLIENT>\n<ID>"+ID+"</ID>\n<FIRST_NAME>"+FIRST_NAME+"</FIRST_NAME>\n<LAST_NAME>"+LAST_NAME+"</LAST_NAME>\n<ID_PASSWORD>"+ID_PASSWORD+"</ID_PASSWORD>\n<PID_NUMBER>"+PID_NUMBER+"</PID_NUMBER>\n</CLIENT>");
+
+	public String toXml() {
+		return ("<CLIENT>\n<ID>" + ID + "</ID>\n<FIRST_NAME>" + FIRST_NAME + "</FIRST_NAME>\n<LAST_NAME>" + LAST_NAME
+				+ "</LAST_NAME>\n<ID_PASSWORD>" + ID_PASSWORD + "</ID_PASSWORD>\n<PID_NUMBER>" + PID_NUMBER
+				+ "</PID_NUMBER>\n</CLIENT>");
 	}
 }
