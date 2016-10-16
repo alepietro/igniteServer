@@ -26,11 +26,11 @@ public class Setting {
 	}
 
 	public String getSETTINGS() {
-		return SETTINGS;
+		return SETTINGS.toUpperCase();
 	}
 
 	public void setSETTINGS(String sETTINGS) {
-		SETTINGS = sETTINGS;
+		SETTINGS = sETTINGS.toUpperCase();
 	}
 
 	public int getID_CLIENT() {
@@ -42,11 +42,11 @@ public class Setting {
 	}
 
 	public String getVALUE() {
-		return VALUE;
+		return VALUE.toUpperCase();
 	}
 
 	public void setVALUE(String vALUE) {
-		VALUE = vALUE;
+		VALUE = vALUE.toUpperCase();
 	}
 	
 	public String toString(){

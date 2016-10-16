@@ -17,11 +17,11 @@ public class Password {
 	}
 
 	public String getPASSWORD() {
-		return PASSWORD;
+		return PASSWORD.toUpperCase();
 	}
 
 	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
+		PASSWORD = pASSWORD.toUpperCase();
 	}
 
 	public GregorianCalendar getWHEN() {

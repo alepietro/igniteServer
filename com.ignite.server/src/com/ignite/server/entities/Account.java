@@ -19,11 +19,11 @@ public class Account {
 	}
 
 	public String getACCOUNT_NUMBER() {
-		return ACCOUNT_NUMBER;
+		return ACCOUNT_NUMBER.toUpperCase();
 	}
 
 	public void setACCOUNT_NUMBER(String aCCOUNT_NUMBER) {
-		ACCOUNT_NUMBER = aCCOUNT_NUMBER;
+		ACCOUNT_NUMBER = aCCOUNT_NUMBER.toUpperCase();
 	}
 
 	public GregorianCalendar getCREATION() {

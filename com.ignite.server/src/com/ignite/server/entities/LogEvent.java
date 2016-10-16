@@ -24,10 +24,10 @@ public class LogEvent {
 	}
 
 	public String getMESSAGE() {
-		return MESSAGE;
+		return MESSAGE.toUpperCase();
 	}
 
 	public void setMESSAGE(String mESSAGE) {
-		MESSAGE = mESSAGE;
+		MESSAGE = mESSAGE.toUpperCase();
 	}
 }

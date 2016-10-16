@@ -21,10 +21,10 @@ public class LoginInformation {
 		ID = iD;
 	}
 	public String getPASSWORD() {
-		return PASSWORD;
+		return PASSWORD.toUpperCase();
 	}
 	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
+		PASSWORD = pASSWORD.toUpperCase();
 	}
 	
 	public String toString(){

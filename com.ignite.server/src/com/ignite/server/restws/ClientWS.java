@@ -17,55 +17,108 @@ import com.ignite.server.entities.Setting;
 @Path("/clients")
 public class ClientWS {
 
-	// This method is called if TEXT_PLAIN is request
-	@GET
-	@Path("/getAll")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getPlainTextSettings() {
-		String res = "";
-
-		return res;
-	}
+//	// This method is called if TEXT_PLAIN is request
+//	@GET
+//	@Path("/getAll")
+//	@Produces(MediaType.TEXT_PLAIN)
+//	public String getAllClients() {
+//		String res = "PLAIN";
+//
+//		return res;
+//	}
 
 	// This method is called if XML is request
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.TEXT_XML)
-	public String getXmlSettings() {
-		String res = "<?xml version=\"1.0\"?>" + "\n" + "<SETTINGS>";
+	public String getAllClients() {
+		String res = "<CLIENTS>" + "\n";
+
+		Client temp = null;
+		Vector<Client> vr = MySqlDao.getAllClients();
+		if (vr != null) {
+			for (int i = 0; i < vr.size(); i++) {
+				temp = vr.elementAt(i);
+				res += temp.toXml() + "\n";
+			}
+		}
+
+		res += "</CLIENTS>";
 
 		return res;
 	}
 
-	// This method is called if HTML is request
-	@GET
-	@Path("/getAll")
-	@Produces(MediaType.TEXT_HTML)
-	public String getHtmlSettings() {
-		String res = "<html> " + "<title>" + "Hello Jersey" + "</title>" + "<body>";
-
-		return res;
-
-	}
+//	// This method is called if HTML is request
+//	@GET
+//	@Path("/getAll")
+//	@Produces(MediaType.TEXT_HTML)
+//	public String getAllClients() {
+//		String res = "<html> " + "<title>" + "Hello Jersey" + "</title>" + "<body>";
+//		res += "<h1>No SETTINGS available</h1>\n";
+//		res += "</body>";
+//		res += "</html>";
+//		return res;
+//
+//	}
 
 	@POST
 	@Path("/checkLogin")
 	@Consumes(MediaType.APPLICATION_XML)
-	/*@Produces(MediaType.TEXT_PLAIN)*/
 	public String checkLogin(LoginInformation l) {
 		String res = "";
 		res = MySqlDao.checkLogin(l);
 		return (res);
 	}
-	
+
 	@POST
 	@Path("/checkStartPage")
 	@Consumes(MediaType.APPLICATION_XML)
-	/*@Produces(MediaType.TEXT_PLAIN)*/
 	public String checkStartPage(LoginInformation l) {
 		String res = "";
 		res = MySqlDao.checkStartPage(l);
 		return (res);
+	}
+	
+	@POST
+	@Path("/getClient")
+	@Consumes(MediaType.APPLICATION_XML)
+	public String getClient(Client c) {
+		String res = "<CLIENTS>" + "\n";
+
+		Client temp = null;
+		Vector<Client> vr = MySqlDao.getClients(c);
+		if (vr != null) {
+			for (int i = 0; i < vr.size(); i++) {
+				temp = vr.elementAt(i);
+				res += temp.toXml() + "\n";
+			}
+		}
+
+		res += "</CLIENTS>";
+
+		return res;
+	}
+	
+	@POST
+	@Path("/modClient")
+	@Consumes(MediaType.APPLICATION_XML)
+	public String modClient(Client c) {
+		String res = "";
+
+		res = "" + MySqlDao.modClient(c);
+
+		return res;
+	}
+	
+	@POST
+	@Path("/addClient")
+	@Consumes(MediaType.APPLICATION_XML)
+	public String addClient(Client c) {
+		String res = "";
+
+		res = "" + MySqlDao.addClient(c);
+
+		return res;
 	}
 
 }

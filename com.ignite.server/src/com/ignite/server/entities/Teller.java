@@ -12,22 +12,22 @@ public class Teller {
 		ID = iD;
 	}
 	public String getNAME() {
-		return NAME;
+		return NAME.toUpperCase();
 	}
 	public void setNAME(String nAME) {
-		NAME = nAME;
+		NAME = nAME.toUpperCase();
 	}
 	public String getUSERNAME() {
-		return USERNAME;
+		return USERNAME.toUpperCase();
 	}
 	public void setUSERNAME(String uSERNAME) {
-		USERNAME = uSERNAME;
+		USERNAME = uSERNAME.toUpperCase();
 	}
 	public String getPASSWORD() {
-		return PASSWORD;
+		return PASSWORD.toUpperCase();
 	}
 	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
+		PASSWORD = pASSWORD.toUpperCase();
 	}
 }
 
