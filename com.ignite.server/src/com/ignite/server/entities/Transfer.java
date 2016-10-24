@@ -66,7 +66,7 @@ public class Transfer {
 		String res = "";
 		res = "<TRANSFER>\n<ID>" + ID + "</ID>\n<AMOUNT>" + AMOUNT + "</AMOUNT>\n<ID_ACCOUNT_FROM>" + ID_ACCOUNT_FROM
 				+ "</ID_ACCOUNT_FROM>\n<ID_ACCOUNT_TO>" + ID_ACCOUNT_TO + "</ID_ACCOUNT_TO>\n<DAY>" + DAY
-				+ "</WHEN>\n</TRANSFER>";
+				+ "</DAY>\n</TRANSFER>";
 
 		return res;
 	}

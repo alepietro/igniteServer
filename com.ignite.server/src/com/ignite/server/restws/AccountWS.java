@@ -9,27 +9,22 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.ignite.server.dao.MyAccountDAO;
-import com.ignite.server.entities.Account;
+import com.ignite.server.dao.MyTransferDAO;
 import com.ignite.server.entities.Transfer;
 
-@Path("/accounts")
-public class TransferWS {
+@Path("/transfers")
+public class AccountWS {
 
 	// This method is called if TEXT_PLAIN is request
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getPlainTextAccount() {
+	public String getPlainTextTransfer() {
 		String res = "";
-		Vector<Account> vs = MyAccountDAO.getAllAccounts();
-		if (vs != null) {
-			for (int i = 0; i < vs.size(); i++) {
-				res += vs.elementAt(i) + "\n";
-			}
-		}
-		else{
-			res = "VUOTO!";
+		Vector<Transfer> vs = MyTransferDAO.getAllTransfers();
+
+		for (int i = 0; i < vs.size(); i++) {
+			res += vs.elementAt(i) + "\n";
 		}
 		return res;
 	}
@@ -38,10 +33,10 @@ public class TransferWS {
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.TEXT_XML)
-	public String getXmlAccounts() {
+	public String getXmlTransfers() {
 		String res = "<?xml version=\"1.0\"?>" + "\n" + "<TRANSFER>";
 
-		Vector<Account> vs = MyAccountDAO.getAllAccounts();
+		Vector<Transfer> vs = MyTransferDAO.getAllTransfers();
 
 		for (int i = 0; i < vs.size(); i++) {
 			res += vs.elementAt(i).toXml();
@@ -54,10 +49,10 @@ public class TransferWS {
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.TEXT_HTML)
-	public String getHtmlAccounts() {
+	public String getHtmlTransfers() {
 		String res = "<html> " + "<title>" + "Hello Jersey" + "</title>" + "<body>";
 
-		Vector<Account> vs = MyAccountDAO.getAllAccounts();
+		Vector<Transfer> vs = MyTransferDAO.getAllTransfers();
 		if ((vs == null) || (vs.size() == 0)) {
 			res += "<h1>No TRANSFERS available</h1>\n";
 		} else {
@@ -72,13 +67,13 @@ public class TransferWS {
 	}
 
 	@POST
-	@Path("/getAccount")
+	@Path("/getTransfer")
 	@Consumes(MediaType.APPLICATION_XML)
-	public String getAccount(Account c) {
-		String res = "<ACCOUNTS>" + "\n";
+	public String getTransfer(Transfer c) {
+		String res = "<TRANSFERS>" + "\n";
 
-		Account temp = null;
-		Vector<Account> vr = MyAccountDAO.getAccounts(c);
+		Transfer temp = null;
+		Vector<Transfer> vr = MyTransferDAO.getTransfers(c);
 		// if (vr != null) {
 		// for (int i = 0; i < vr.size(); i++) {
 		// temp = vr.elementAt(i);
@@ -86,29 +81,29 @@ public class TransferWS {
 		// }
 		// }
 
-		res += "</ACCOUNTS>";
+		res += "</TRANSFERS>";
 
 		return res;
 	}
 
 	@POST
-	@Path("/modAccount")
+	@Path("/modTransfer")
 	@Consumes(MediaType.APPLICATION_XML)
-	public String modAccount(Account s) {
+	public String modTransfer(Transfer s) {
 		String res = "";
 
-		res = "" + MyAccountDAO.modAccount(s);
+		res = "" + MyTransferDAO.modTransfer(s);
 
 		return res;
 	}
 
 	@POST
-	@Path("/addAccount")
+	@Path("/addTransfer")
 	@Consumes(MediaType.APPLICATION_XML)
-	public String addAccount(Account s) {
+	public String addTransfer(Transfer s) {
 		String res = "";
 
-		res = "" + MyAccountDAO.addAccount(s);
+		res = "" + MyTransferDAO.addTransfer(s);
 
 		return res;
 	}

@@ -181,7 +181,7 @@ public class MyTransferDAO {
 		int res = 0;
 
 		/* Query building Start */
-		SQLQuery = "UPDATE TRASNFER SET AMOUNT = " + s.getAMOUNT() + ",ID_ACCOUNT_FROM = " + s.getID_ACCOUNT_FROM()
+		SQLQuery = "UPDATE TRANSFER SET AMOUNT = " + s.getAMOUNT() + ",ID_ACCOUNT_FROM = " + s.getID_ACCOUNT_FROM()
 				+ ",ID_ACCOUNT_TO = " + s.getID_ACCOUNT_TO() + ",DAY = " + s.getDAY() + " WHERE ID = " + s.getID();
 		SQLQuery += ";";
 		System.out.println("\nmodtransfer.SQLQuery = **" + SQLQuery + "**\n\n");
